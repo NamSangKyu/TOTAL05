@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        /*1080 픽셀부터는 해당 CSS 적용*/
+        @media screen and (min-width:1080px){
+            header {
+                width: 1200px;
+                height: 200px;
+                border: 1px solid black;
+                margin: 0 auto;
+            }
+    
+            nav {
+                width: 1200px;
+                border: 1px solid black;
+                margin: 0 auto;
+            }
+    
+            ul {
+                list-style-type: none;
+            }
+    
+            a:link,
+            a:visited {
+                padding: 10px 0px;
+                width: 150px;
+                font-size: 20px;
+                line-height: 20px;
+                border: 1px solid blueviolet;
+                text-align: center;
+                display: inline-block;
+                text-decoration: none;
+                color: black;
+            }
+            li {
+                display: inline-block;
+            }
+            ul{
+                /*CSS 주석*/
+                font-size: 0px;
+                text-align: center;
+            }
+            section{
+                width: 1200px;
+                border: 1px solid black;
+                margin: 0 auto;
+                font-size: 0px;
+                padding:20px 0px;
+            }
+            article{
+                width:600px;
+                height: 200px;
+                border:1px solid red;
+                display: inline-block;
+                box-sizing: border-box;
+            }
+            footer{
+                width: 1200px;
+                height: 200px;
+                border:1px solid black;
+                margin: 0 auto;
+            }
+        }
+        @media screen and (max-width:1079px) {
+            header,nav,section,footer{
+                width: 100%;
+            }
+            header{
+                height: 200px;
+                background-color: aquamarine;
+            }
+            ul{
+                width: 100%;
+                list-style-type: none;
+                font-size: 0px;
+            }
+            li{
+                width: 50%;
+                display: inline-block;
+            }
+            a:link,a:visited{
+                display: inline-block;
+                width: 100%;
+                height: 50px;
+                line-height: 20px;
+                font-size: 20px;
+                padding:15px 0px;
+                background-color: chartreuse;
+                box-sizing: border-box;
+                text-align: center;
+                border:1px solid green;
+            }
+            article{
+                width: 100%;
+                height: 200px;
+                border:1px solid red;
+                background-color: coral;
+            }
+            footer{
+                width: 100%;
+                height: 200px;
+                border:1px solid black;
+                background-color: #e8e8e8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>header</header>
+    <nav>
+        <ul>
+            <li><a href="#">메뉴1</a></li>
+            <li><a href="#">메뉴2</a></li>
+            <li><a href="#">메뉴3</a></li>
+            <li><a href="#">메뉴4</a></li>
+            <li><a href="#">메뉴5</a></li>
+            <li><a href="#">메뉴6</a></li>
+        </ul>
+    </nav>
+    <section>
+        <article>article-1</article>
+        <article>article-2</article>
+        <article>article-3</article>
+        <article>article-4</article>
+    </section>
+    <footer>footer</footer>
+</body>
+</html>
