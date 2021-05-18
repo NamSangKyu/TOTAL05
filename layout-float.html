@@ -19,9 +19,13 @@
         nav{
             width: 1200px;
             border: 1px solid green;
+            text-align: center;
+            font-size: 0px;
         }
         ul{
             list-style-type: none;
+            display: inline-block;
+            background-color: aquamarine;
         }
         a:link,
         a:visited {
@@ -34,6 +38,20 @@
             display: inline-block;
             text-decoration: none;
             color: black;
+        }
+        li{
+            float: left;
+        }
+        aside{
+            width: 150px;
+            height: 500px;
+            border: 1px solid black;
+        }
+        section{
+            width:1200px;
+            height: 500px;
+            border: 1px solid black;
+            margin: 0 10px;
         }
     </style>
 </head>
@@ -49,12 +67,14 @@
             <li><a href="#">메뉴5</a></li>
         </ul>
     </nav>
+    <aside></aside>
     <section>
         <article></article>
         <article></article>
         <article></article>
         <article></article>
     </section>
+    <aside></aside>
     <footer></footer>
 </body>
 
