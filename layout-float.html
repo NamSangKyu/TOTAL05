@@ -15,12 +15,14 @@
             width : 1200px;
             height: 200px;
             border: 1px solid black;
+            display: inline-block;
         }
         nav{
             width: 1200px;
             border: 1px solid green;
             text-align: center;
             font-size: 0px;
+            display: inline-block;
         }
         ul{
             list-style-type: none;
@@ -46,12 +48,28 @@
             width: 150px;
             height: 500px;
             border: 1px solid black;
+            float: left;
         }
         section{
             width:1200px;
             height: 500px;
             border: 1px solid black;
             margin: 0 10px;
+            float: left;
+        }
+        body{
+            text-align: center;
+            font-size: 0px;
+        }
+        .container{
+            display: inline-block;
+            border: 1px solid red;
+        }
+        footer{
+            width: 1200px;
+            height: 200px;
+            border: 1px solid black;
+            display: inline-block;
         }
     </style>
 </head>
@@ -67,14 +85,16 @@
             <li><a href="#">메뉴5</a></li>
         </ul>
     </nav>
-    <aside></aside>
-    <section>
-        <article></article>
-        <article></article>
-        <article></article>
-        <article></article>
-    </section>
-    <aside></aside>
+    <div class="container">
+        <aside>1</aside>
+        <section>
+            <article></article>
+            <article></article>
+            <article></article>
+            <article></article>
+        </section>
+        <aside>2</aside>
+    </div>
     <footer></footer>
 </body>
 
