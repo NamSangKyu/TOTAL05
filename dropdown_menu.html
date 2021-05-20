@@ -24,11 +24,13 @@
 
         nav ul {
             list-style-type: none;
+            float: left;
         }
 
-        nav ul>li {
+        .nav_container{
             display: inline-block;
         }
+
 
         .main_menu>li>a:link,
         .main_menu>li>a:visited {
@@ -38,9 +40,27 @@
             font-size: 18px;
             line-height: 18px;
             padding: 16px 0px;
-
+            color: #977b7b;
+            text-decoration: none;
         }
-
+        .sub_menu>li>a:link,
+        .sub_menu>li>a:visited {
+            display: inline-block;
+            width: 150px;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 16px;
+            padding: 16px 0px;
+            color: #977b7b;
+            text-decoration: none;
+        }
+        nav li > a:hover{
+            background-color: #1f1111;
+            color:white !important;
+        }
+        .sub_menu{
+            display: none;
+        }
         section {
             width: 1200px;
             height: 500px;
@@ -53,31 +73,33 @@
 
 <body>
     <nav>
-        <ul class="main_menu">
-            <li><a href="#">HOME</a></li>
-        </ul>
-        <ul class="main_menu">
-            <li><a href="#">예약</a></li>
-            <ul class="sub_menu">
-                <li><a href="#">예약하기</a></li>
-                <li><a href="#">예약조회</a></li>
+        <div class="nav_container">
+            <ul class="main_menu">
+                <li><a href="#">HOME</a></li>
             </ul>
-        </ul>
-        <ul class="main_menu">
-            <li><a href="#">펜션스토리</a></li>
-            <ul class="sub_menu">
-                <li><a href="#">커뮤니티</a></li>
-                <li><a href="#">갤러리</a></li>
-                <li><a href="#">QnA</a></li>
+            <ul class="main_menu">
+                <li><a href="#">예약</a></li>
+                <ul class="sub_menu">
+                    <li><a href="#">예약하기</a></li>
+                    <li><a href="#">예약조회</a></li>
+                </ul>
             </ul>
-        </ul>
-        <ul class="main_menu">
-            <li><a href="#">펜션소개</a></li>
-            <ul class="sub_menu">
-                <li><a href="#">오시는길</a></li>
-                <li><a href="#">시설안내</a></li>
+            <ul class="main_menu">
+                <li><a href="#">펜션스토리</a></li>
+                <ul class="sub_menu">
+                    <li><a href="#">커뮤니티</a></li>
+                    <li><a href="#">갤러리</a></li>
+                    <li><a href="#">QnA</a></li>
+                </ul>
             </ul>
-        </ul>
+            <ul class="main_menu">
+                <li><a href="#">펜션소개</a></li>
+                <ul class="sub_menu">
+                    <li><a href="#">오시는길</a></li>
+                    <li><a href="#">시설안내</a></li>
+                </ul>
+            </ul>
+        </div>
     </nav>
     <section>
 
