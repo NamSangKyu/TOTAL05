@@ -69,6 +69,40 @@
         }
     </style>
     <script src="/resource/js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            //main_menu에 마우스가 올라가면 각각의 sub_menu를 보여줌
+            var arr = [false,false,false,false];
+            $(".main_menu").mouseenter(function(){
+                //alert($(this).index());
+                $(this).children(".sub_menu").stop().slideDown(500);
+            });
+            $(".main_menu").mouseleave(function(){
+                $(this).children(".sub_menu").stop().slideUp(500);
+            });
+            /*
+                var arr = [false,false,false,false];
+            $(".main_menu").mouseenter(function(){
+                //alert($(this).index());
+                var index = $(this).index();
+                if(!arr[index]){
+                    $(this).children(".sub_menu").stop().slideDown(500,function(){
+                        arr[index] = true;
+                    });
+                }
+            });
+            $(".main_menu").mouseleave(function(){
+                var index = $(this).index();
+                if(arr[index]){
+                    $(this).children(".sub_menu").stop().slideUp(500,function(){
+                        arr[index] = false;
+                    });
+                }
+                
+            });
+            */
+        });
+    </script>
 </head>
 
 <body>
