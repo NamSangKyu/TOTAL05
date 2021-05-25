@@ -32,7 +32,12 @@
                 //지도 위치를 이동
                 var pos = new kakao.maps.LatLng(result[0].y, result[0].x);
                 map.setCenter(pos);
-                //마커 추가
+                //마커 생성
+                var marker = new kakao.maps.Marker({
+                    position: pos
+                });
+                //지도에 마커 추가
+                marker.setMap(map);
             }
         );
 
