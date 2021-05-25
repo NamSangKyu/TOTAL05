@@ -13,7 +13,9 @@
             //카카오 라이브러리 초기화
             Kakao.init('1f8e1170eca4d7d9082f6cfac00904ce');
             console.log(Kakao.isInitialized());//초기화 여부
-
+            $("#unlink").click(unlinkApp);
+            $("#logout").click(kakaoLogout);
+            
         });
         function getProfile(){
             Kakao.API.request({
@@ -41,6 +43,26 @@
                 },
             })
         }
+        function unlinkApp() {
+            Kakao.API.request({
+              url: '/v1/user/unlink',
+              success: function(res) {
+                alert('success: ' + JSON.stringify(res))
+              },
+              fail: function(err) {
+                alert('fail: ' + JSON.stringify(err))
+              },
+            })
+          }                 
+          function kakaoLogout() {
+            if (!Kakao.Auth.getAccessToken()) {
+              alert('Not logged in.')
+              return
+            }
+            Kakao.Auth.logout(function() {
+              alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken())
+            })
+          }
     </script>
 </head>
 
