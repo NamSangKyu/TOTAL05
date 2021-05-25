@@ -29,6 +29,10 @@
             function(result, status){
                 console.log(status);
                 console.log(result);
+                //지도 위치를 이동
+                var pos = new kakao.maps.LatLng(result[0].y, result[0].x);
+                map.setCenter(pos);
+                //마커 추가
             }
         );
 
