@@ -6,6 +6,40 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>카카오맵 예제</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style type="text/css">
+        .customoverlay{
+            position: relative;
+            bottom: 85px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            border-bottom:2px solid #ddd;
+            float:left;
+        }
+        .customoverlay:nth-of-type(n){
+            border:0;
+            box-shadow:0px 1px 20px #888;
+        }
+        .customoverlay a{
+            display: block;
+            text-decoration: none;
+            color:#000;
+            text-align: center;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            overflow:hidden;
+            background: #FFBB00 url('/resource/img/route.png') no-repeat right center;
+        }
+        .customoverlay .title{
+            display: block;
+            text-align: center;
+            background-color: #fff;
+            margin-right: 35px;
+            padding:10px 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        </style>
 </head>
 
 <body>
@@ -38,6 +72,18 @@
                 });
                 //지도에 마커 추가
                 marker.setMap(map);
+                //커스텀 오버레이 - 말풍선
+                var content = "<div class='customoverlay' id='info'>"+
+                    "<a href='https://map.kakao.com/link/to/코리아IT아카데미신촌점,"
+                        +result[0].y+","+result[0].x+"' target='_blank'>"
+                        +"<span class='title'>코리아IT신촌점<br>길찾기</span></a></div>";
+                //커스텀 오버레이 - 생성 후 적용
+                var customoverlay = new kakao.maps.CustomOverlay({
+                    position : pos,
+                    yAnchor : 0.5,
+                    content : content
+                });
+                customoverlay.setMap(map);
             }
         );
 
