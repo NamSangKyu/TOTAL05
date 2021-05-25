@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="/resource/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=eb20edf543cd8f923bbd6f933314e6a1&libraries=services"></script>
+    <script>
+        $(function(){
+            //버튼을 클릭했을때
+            $("button").click(function(){
+                //  1 - 지도 생성
+                var container = $("#map")[0];
+                var options = {
+                    center : new kakao.maps.LatLng(33.450701, 126.570667),
+				    level : 1
+                };
+                var map = new kakao.maps.Map(container, options);
+                //  2 - 좌표 검색
+                var geocoder = new kakao.maps.services.Geocoder();
+                geocoder.addressSearch($("#address").val(),
+                function(result, status){
+                    //  3 - 지도 좌표 설정
+                    var pos = new kakao.maps.LatLng(result[0].y,result[0].x);
+                    $("#area").html(result[0].y + " " + result[0].x);
+                    map.setCenter(pos);
+                    //  4 - 마커 설정
+                    var marker = new kakao.maps.Marker({
+                        map : map,
+                        position : pos
+                    });
+                });
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text" id="address"><button>검색</button>
+    <div id="area"></div>
+    <div id="map" style="width:500px;height: 400px;"></div>
+</body>
+</html>
