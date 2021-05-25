@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="/resource/js/jquery-3.6.0.min.js"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //카카오 라이브러리 초기화
+            Kakao.init('1f8e1170eca4d7d9082f6cfac00904ce');
+            console.log(Kakao.isInitialized());//초기화 여부
+
+        });
+        function loginWithKakao() {
+            Kakao.Auth.login({
+                success: function (authObj) {
+                    console.log(JSON.stringify(authObj))
+                },
+                fail: function (err) {
+                    console.log(JSON.stringify(err))
+                },
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <a id="custom-login-btn" href="javascript:loginWithKakao()">
+        <img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222" />
+    </a>
+    <a href="#" id="logout">로그아웃</a>
+    <a href="#" id="unlink">회원탈퇴</a>
+    <div id="result"></div>
+</body>
+
+</html>
