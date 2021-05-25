@@ -15,10 +15,26 @@
             console.log(Kakao.isInitialized());//초기화 여부
 
         });
+        function getProfile(){
+            Kakao.API.request({
+                url: '/v2/user/me',
+                success: function(res) {
+                    console.log(res);
+                  $("#result").html(res.kakao_account.email + 
+                  " " +res.kakao_account.profile.nickname);
+                },
+                fail: function(error) {
+                  console.log(
+                      JSON.stringify(error)
+                  )
+                },
+              });
+        }
         function loginWithKakao() {
             Kakao.Auth.login({
                 success: function (authObj) {
                     console.log(JSON.stringify(authObj))
+                    getProfile();
                 },
                 fail: function (err) {
                     console.log(JSON.stringify(err))
