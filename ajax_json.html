@@ -64,12 +64,35 @@
 	</style>
     <script src='/resource/js/jquery-3.6.0.min.js'></script>
     <script>
+        $(function(){
+            $("#btn_translate").click(function(){
+                var param = $("#frm").serialize();
+                //alert(param);
+                $.ajax({
+                    url : "http://nam2626.dothome.co.kr/backup/papago.php",
+                    data : param,
+                    type : 'get',
+                    success : function(data){
+                        console.log(data);
+                        var result = data.split("<br>")[1];
+                        result = JSON.parse(result);
+                        $("#result").val(result.message.result.translatedText);
+                    },
+                    error: function(xhr,status,error){
+                        console.log("code : " + xhr.status + 
+                        " , message : "+xhr.responseText + ", error : "+error );
+                    }
 
+                });
+                return false;
+            });
+        });
     </script>
 </head>
 <body>
     <h1>파파고 번역 페이지</h1>
 	<section>
+        <form id="frm">
 		<article>
 			<select name="source" id="source">
 				<option value="ko">한국어</option>
@@ -79,7 +102,7 @@
 				<option value="zh-CN">중국어</option>
 			</select>
 			<h1>번역할 내용</h1>
-			<textarea name="text" id="text"></textarea>
+			<textarea name="txt" id="text"></textarea>
 		</article>
 		<article>
 			<select name="target" id="target">
@@ -90,9 +113,10 @@
 				<option value="zh-CN">중국어</option>
 			</select>
 			<h1>번역된 내용</h1>
-			<textarea name="result" id="result"></textarea>
+			<textarea id="result"></textarea>
 		</article>
 		<button id="btn_translate">>></button>
+        </form>
 	</section>
 </body>
 </html>

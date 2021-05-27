@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="/resource/js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $("#request").click(function(){
+
+                var appKey = "23815d818a51ef76062d119292b5691e";
+                var city = "seoul"
+                var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${appKey}`;
+                
+                $.ajax({
+                    url : apiUrl,
+                    type : "get",
+                    success:function(result){
+                        console.log(result);
+                        $("#result").html("");
+                        $("#result").append(`<p>현재 온도 : ${result.main.temp-273.15}</p>`);
+                        $("#result").append(`<p>최고 온도 : ${result.main.temp_max-273.15}</p>`);
+                        $("#result").append(`<p>최저 온도 : ${result.main.temp_min-273.15}</p>`);
+                        $("#result").append(`<p>풍량 : ${result.wind.speed}m/sec</p>`);
+                        
+                    }
+                });
+                
+            });
+                
+                
+            });
+            
+        </script>
+    </head>
+    <body>
+        <button id="request">날씨 정보 요청</button>
+    <div id="result"></div>
+    <div id="openweathermap-widget-15"></div>
+<script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 15,cityid: '1835848',appid: '23815d818a51ef76062d119292b5691e',units: 'metric',containerid: 'openweathermap-widget-15',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
+</body>
+</html>
