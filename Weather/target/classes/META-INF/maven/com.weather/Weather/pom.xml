@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.weather</groupId>
+  <artifactId>Weather</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Weather</name>
+ 
+  <dependencies>
+  	<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20201115</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-ooxml</artifactId>
+		    <version>5.0.0</version>
+		</dependency>
+		
+  </dependencies>
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-compiler-plugin</artifactId>
+  			<version>3.8.1</version>
+  			<configuration>
+  				<source>1.11</source>
+  				<target>1.11</target>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+</project>

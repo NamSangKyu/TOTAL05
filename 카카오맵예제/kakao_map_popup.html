@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+<meta charset="UTF-8">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Insert title here</title>
+<script type="text/javascript"
+	src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=0caee9464a99b29ad7960fd88130de1e&libraries=services"></script>
+<script src="lib/jquery.js"></script>
+<script src="lib/jquery-ui.js"></script>
+<link rel="stylesheet" href="lib/jquery-ui.css"/>
+<script>
+	$(function() {
+		$("#btnMap").click(function() {
+			$("#popup").dialog({
+				width:700,
+				top : 100,
+				left: 50,
+				buttons: {
+				close : function(){
+					$("#popup").dialog("close");
+				}
+				}
+			});
+			var container = document.getElementById("map");
+			var options = {
+				center : new kakao.maps.LatLng(33.450701, 126.570667),
+				level : 3
+			};
+
+			var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+			//주소->좌표 변환 객체 생성
+			var geocoder = new kakao.maps.services.Geocoder();
+			//좌표 검색
+			geocoder.addressSearch('서울특별시 마포구 서강로 136 아이비타워 2층,3층',function(result,status){
+				if(status == daum.maps.services.Status.OK){
+					var coords = new kakao.maps.LatLng(result[0].y,result[0].x);
+					
+					var marker = new kakao.maps.Marker({
+						map : map,
+						position: coords
+					});
+					
+					map.setCenter(coords);
+					
+					//커스텀 오버레이
+					var content1 = "<div class='customoverlay' id='info'><a href='https://map.kakao.com/link/to/코리아IT아카데미신촌점,"+result[0].y+","+result[0].x+"' target='_blank'><span class='title'>코리아IT신촌점<br>길찾기</span></a></div>";
+					console.log(content1);
+					var customOverlay = new kakao.maps.CustomOverlay({
+						position: coords,
+						content : content1,
+						yAnchor : 0.3
+					});
+					customOverlay.setMap(map);
+				}
+		});
+		});
+		//---------------------
+		
+	});
+
+</script>
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	#popup{
+		
+	}
+	#map{
+		width:700px;
+		height: 600px;
+	}
+	.customoverlay{
+	position: relative;
+	bottom: 85px;
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	border-bottom:2px solid #ddd;
+	float:left;
+}
+.customoverlay:nth-of-type(n){
+	border:0;
+	box-shadow:0px 1px 20px #888;
+}
+.customoverlay a{
+	display: block;
+	text-decoration: none;
+	color:#000;
+	text-align: center;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: bold;
+	overflow:hidden;
+	background: #FFBB00 url('route.png') no-repeat right center;
+}
+.customoverlay .title{
+	display: block;
+	text-align: center;
+	background-color: #fff;
+	margin-right: 35px;
+	padding:10px 15px;
+	font-size: 14px;
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+	<button id="btnMap">카카오맵 열기</button>
+	
+	<div id="popup" title="카카오맵">
+		<div id="map"></div>
+	</div>
+</body>
+</html>

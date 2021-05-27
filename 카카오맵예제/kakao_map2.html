@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+<meta charset="UTF-8">
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>카카오맵</title>
+<script type="text/javascript"
+	src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=0caee9464a99b29ad7960fd88130de1e&libraries=services"></script>
+<script>
+	window.onload = function() {
+
+		var container = document.getElementById('map');
+		var options = {
+			center : new kakao.maps.LatLng(33.450701, 126.570667),
+			level : 3
+		};
+
+		var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+		//주소->좌표 변환 객체 생성
+		var geocoder = new kakao.maps.services.Geocoder();
+		//좌표 검색
+		geocoder.addressSearch('서울특별시 마포구 서강로 136 아이비타워 2층,3층',function(result,status){
+			if(status == daum.maps.services.Status.OK){
+				var coords = new kakao.maps.LatLng(result[0].y,result[0].x);
+				
+				map.setCenter(coords);
+			}
+		});
+		
+	}
+</script>
+</head>
+<body>
+	<div id="map" style="width: 500px; height: 400px;"></div>
+</body>
+</html>
+
+
+
+
+
