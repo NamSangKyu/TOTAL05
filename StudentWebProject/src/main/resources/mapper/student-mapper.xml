@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.student.StudentMapper">
+ 	 <select id="selectStudentMode" parameterType="map" resultType="com.student.StudentDTO">
+ 	 	select * from student where
+ 	 	<choose>
+ 	 		<when test="mode.equals('sno')">
+ 	 			sno like '%'||#{search}||'%'
+ 	 		</when>
+ 	 		<when test="mode.equals('name')">
+ 	 			name like '%'||#{search}||'%'
+ 	 		</when>
+ 	 		<otherwise>
+ 	 			major like '%'||#{search}||'%'
+ 	 		</otherwise>
+ 	 	</choose>
+ 	 </select>
+ 	 <select id="selectAllStudent" resultType="com.student.StudentDTO">
+ 	 	select * from student
+ 	 </select>
+ 	 <insert id="insertLog" parameterType="map">
+ 	 	insert into student_log values(to_date(#{log_date},'YYYY/MM/DD HH24:MI:SS'),#{error_code},#{content})
+ 	 </insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+
