@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book.BookMapper">
+ 	 <select id="selectAllBook" resultType="book">
+ 	 	select * from book
+ 	 </select>
+ 	 <insert id="insertBook" parameterType="book">
+ 	 	insert into book values(#{bno},#{title},#{writer},#{publisher},to_date(#{wdate},'YYYY-MM-DD'))
+ 	 </insert>
+ 	 <update id="updateBook" parameterType="book">
+ 	 	update book set title=#{title}, writer=#{writer},publisher= #{publisher},wdate=to_date(#{wdate},'YYYY-MM-DD') where bno = #{bno}
+ 	 </update>
+ 	 <delete id="deleteBook" parameterType="String">
+ 	 	delete from book where bno = #{bno}
+ 	 </delete>
+ 	 <select id="selectBook" parameterType="String" resultType="book">
+ 	 	select * from book where title like '%'||#{title}||'%'
+ 	 </select>
+ 	 
+ 	 <insert id="insertLog" parameterType="map">
+ 	 	insert into book_log values(to_date(#{log_date},'YYYY/MM/DD HH24:MI:SS'),#{error_code},#{content})
+ 	 </insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+
